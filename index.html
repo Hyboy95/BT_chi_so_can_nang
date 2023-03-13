@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BT_BMI</title>
+</head>
+<body>
+<p>Tính chỉ số cân nặng của cơ thể (BMI):</p>
+<input id="weight" type="text" placeholder="Nhập vào cân nặng(kg)" style="margin-bottom: 10px"><br>
+<input id="height" type="text" placeholder="Nhập vào chiều cao(m)" style="margin-bottom: 10px"><br>
+<button id="btn">Kiểm tra</button>
+<p id="result"></p>
+</body>
+</html>
+<script>
+    let btn = document.getElementById('btn');
+    let result = document.getElementById('result');
+    btn.addEventListener('click', on_click)
+
+    function on_click() {
+        let weight = +document.getElementById('weight').value;
+        let height = +document.getElementById('height').value;
+        let BMI = weight / (Math.pow(height,2));
+        console.log (BMI)
+        if ((weight > 0) && (height > 0)) {
+            if (BMI >= 30.0) {
+                result.innerHTML = "Obese";
+            } else if (BMI >= 25.0) {
+                result.innerHTML = "Overweight";
+            } else if (BMI >= 18.5) {
+                result.innerHTML = "Normal"
+            } else
+                result.innerHTML = "Underweight"
+        } else
+            result.innerHTML = "Không hợp lệ, vui lòng nhập lại"
+    }
+</script>
